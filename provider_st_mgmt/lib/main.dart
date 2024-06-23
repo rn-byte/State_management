@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_st_mgmt/provider/count_provider.dart';
 import 'package:provider_st_mgmt/provider/example_one_provider.dart';
+import 'package:provider_st_mgmt/provider/favourite_provider.dart';
+import 'package:provider_st_mgmt/screen/favourite/fav_screen.dart';
 // ignore: unused_import
 import 'home_screen.dart';
 // ignore: unused_import
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => ExampleOneProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => FavouriteProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const ExampleOneScreen(),
+        home: const FavScreen(),
       ),
     );
   }
