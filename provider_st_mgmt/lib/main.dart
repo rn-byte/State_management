@@ -1,15 +1,19 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_st_mgmt/provider/count_provider.dart';
 import 'package:provider_st_mgmt/provider/example_one_provider.dart';
 import 'package:provider_st_mgmt/provider/favourite_provider.dart';
 import 'package:provider_st_mgmt/provider/theme_changer_provider.dart';
+
 import 'package:provider_st_mgmt/screen/favourite/fav_screen.dart';
-// ignore: unused_import
+
 import 'home_screen.dart';
-// ignore: unused_import
+
 import 'screen/count_example.dart';
 import 'screen/favourite/dark_theme.dart';
+import 'screen/favourite/value_notify_listener.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +61,7 @@ class MyApp extends StatelessWidget {
                 primaryColor: Colors.purple,
                 iconTheme: const IconThemeData(color: Colors.red),
                 appBarTheme: const AppBarTheme(backgroundColor: Colors.red)),
-            home: const DarkThemeScreen(),
+            home: ValueNotifyListenerScreen(),
           );
         },
       ),
