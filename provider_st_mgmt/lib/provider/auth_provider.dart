@@ -29,7 +29,7 @@ class AuthProvider with ChangeNotifier {
       };
       var body = {
         'email': email.toString().trim(),
-        'password': pass.toString().trim(),
+        'password': pass.toString().trim()
       };
 
       http.Response response = await http.post(
@@ -38,6 +38,8 @@ class AuthProvider with ChangeNotifier {
         body: jsonEncode(body),
       );
       debugPrint(response.statusCode.toString());
+      debugPrint('Response Body: ${response.body}');
+      debugPrint('Response Body: ${body}');
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body.toString());

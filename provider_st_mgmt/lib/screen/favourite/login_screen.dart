@@ -69,8 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             WidgetStatePropertyAll(Colors.blue[300])),
                     onPressed: () {
                       value.login(
-                        value.emailController.toString(),
-                        value.passController.toString(),
+                        value.emailController.text.toString(),
+                        value.passController.text.toString(),
                       );
                       //print(value.emailController.toString());
                     },
