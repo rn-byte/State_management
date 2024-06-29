@@ -29,6 +29,7 @@ class ValueNotifyListenerScreen extends StatelessWidget {
                 builder: (context, value, child) {
                   return TextFormField(
                     obscureText: toogle.value,
+                    obscuringCharacter: '*',
                     decoration: InputDecoration(
                         hintText: 'Enter Password',
                         suffixIcon: GestureDetector(

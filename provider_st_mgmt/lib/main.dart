@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_st_mgmt/provider/auth_provider.dart';
 import 'package:provider_st_mgmt/provider/count_provider.dart';
 import 'package:provider_st_mgmt/provider/example_one_provider.dart';
 import 'package:provider_st_mgmt/provider/favourite_provider.dart';
 import 'package:provider_st_mgmt/provider/theme_changer_provider.dart';
 
 import 'package:provider_st_mgmt/screen/favourite/fav_screen.dart';
+import 'package:provider_st_mgmt/screen/favourite/login_screen.dart';
 
 import 'home_screen.dart';
 
@@ -29,18 +31,11 @@ class MyApp extends StatelessWidget {
     // for Multi provider
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => CountProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ExampleOneProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => FavouriteProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ThemeChangerProvider(),
-        )
+        ChangeNotifierProvider(create: (context) => CountProvider()),
+        ChangeNotifierProvider(create: (context) => ExampleOneProvider()),
+        ChangeNotifierProvider(create: (context) => FavouriteProvider()),
+        ChangeNotifierProvider(create: (context) => ThemeChangerProvider()),
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
       ],
       child: Builder(
         builder: (context) {
@@ -61,7 +56,7 @@ class MyApp extends StatelessWidget {
                 primaryColor: Colors.purple,
                 iconTheme: const IconThemeData(color: Colors.red),
                 appBarTheme: const AppBarTheme(backgroundColor: Colors.red)),
-            home: ValueNotifyListenerScreen(),
+            home: const LoginScreen(),
           );
         },
       ),
