@@ -29,10 +29,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   controller: value.emailController,
                   decoration: const InputDecoration(
-                      hintText: 'Enter Email',
-                      prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)))),
+                    hintText: 'Enter Email',
+                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
