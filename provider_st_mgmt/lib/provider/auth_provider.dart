@@ -39,7 +39,7 @@ class AuthProvider with ChangeNotifier {
       );
       debugPrint(response.statusCode.toString());
       debugPrint('Response Body: ${response.body}');
-      debugPrint('Response Body: ${body}');
+      debugPrint('Response Body: $body');
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body.toString());

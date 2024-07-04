@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_st_mgmt/provider/theme_changer_provider.dart';
@@ -12,7 +13,9 @@ class DarkThemeScreen extends StatefulWidget {
 class _DarkThemeScreenState extends State<DarkThemeScreen> {
   @override
   Widget build(BuildContext context) {
-    print('build 2');
+    if (kDebugMode) {
+      print('build 2');
+    }
     //final themeChanger = Provider.of<ThemeChangerProvider>(context);
     return Scaffold(
       appBar: AppBar(

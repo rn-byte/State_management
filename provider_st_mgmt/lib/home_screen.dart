@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           num++;
-          print(num.toString());
+          if (kDebugMode) {
+            print(num.toString());
+          }
           setState(() {});
         },
         child: const Icon(Icons.add),

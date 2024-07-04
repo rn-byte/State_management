@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_st_mgmt/provider/count_provider.dart';
@@ -27,7 +28,9 @@ class _CountExampleState extends State<CountExample> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
+    if (kDebugMode) {
+      print('build');
+    }
     final countProvider = Provider.of<CountProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
