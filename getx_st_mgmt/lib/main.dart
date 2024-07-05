@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_st_mgmt/Views/counter_view.dart';
+import 'package:getx_st_mgmt/Views/example_three.dart';
 import 'package:getx_st_mgmt/Views/example_two.dart';
 import 'package:getx_st_mgmt/Views/language_translation.dart';
 import 'package:getx_st_mgmt/Views/screen_one.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ScreenOne', page: () => const ScreenOne()),
         GetPage(name: '/CounterView', page: () => const CounterView()),
         GetPage(name: '/ExampleTwo', page: () => const ExampleTwo()),
+        GetPage(name: '/ExampleThree', page: () => const ExampleThree()),
         GetPage(name: '/ScreenTwo', page: () => const ScreenTwo()),
         GetPage(
             name: '/LangTranslationScr',
