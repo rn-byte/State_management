@@ -117,7 +117,16 @@ class _HomeViewState extends State<HomeView> {
                     'Flutter GetX localization & Change App Language'),
                 subtitle: const Text('Click Here to GoTo That screen'),
               ),
-            )
+            ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Get.toNamed('CounterView');
+                },
+                title: const Text('Flutter GetX Counter Example'),
+                subtitle: const Text('Click Here to GoTo That screen'),
+              ),
+            ),
           ],
         ),
       ),
