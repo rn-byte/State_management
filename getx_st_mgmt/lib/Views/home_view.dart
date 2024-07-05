@@ -54,39 +54,56 @@ class _HomeViewState extends State<HomeView> {
             ),
             Card(
               child: ListTile(
-                title: const Text('GetX BottomSheet'),
-                subtitle: const Text('GetX BottomSheet With Click'),
+                  title: const Text('GetX BottomSheet'),
+                  subtitle: const Text('GetX BottomSheet With Click'),
+                  onTap: () {
+                    Get.bottomSheet(SizedBox(
+                      child: Column(
+                        children: [
+                          ListTile(
+                            leading: const Icon(Icons.light_mode),
+                            title: const Text('Light Mode'),
+                            onTap: () {
+                              themeController.changeThemeMode(ThemeMode.light);
+                              //Get.changeThemeMode(ThemeMode.light);
+                            },
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.dark_mode),
+                            title: const Text('Dark Mode'),
+                            onTap: () {
+                              themeController.changeThemeMode(ThemeMode.dark);
+                              //Get.changeThemeMode(ThemeMode.dark);
+                            },
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.system_security_update),
+                            title: const Text('System Mode'),
+                            onTap: () {
+                              Get.changeThemeMode(ThemeMode.system);
+                            }, //
+                          ),
+                        ],
+                      ),
+                    ));
+                  }),
+            ),
+            Card(
+              child: ListTile(
                 onTap: () {
-                  Get.bottomSheet(SizedBox(
-                    child: Column(
-                      children: [
-                        ListTile(
-                          leading: const Icon(Icons.light_mode),
-                          title: const Text('Light Mode'),
-                          onTap: () {
-                            themeController.changeThemeMode(ThemeMode.light);
-                            //Get.changeThemeMode(ThemeMode.light);
-                          },
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.dark_mode),
-                          title: const Text('Dark Mode'),
-                          onTap: () {
-                            themeController.changeThemeMode(ThemeMode.dark);
-                            //Get.changeThemeMode(ThemeMode.dark);
-                          },
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.system_security_update),
-                          title: const Text('System Mode'),
-                          onTap: () {
-                            Get.changeThemeMode(ThemeMode.system);
-                          }, //
-                        ),
-                      ],
-                    ),
-                  ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const ScreenOne(),
+                  //     ));
+
+                  //Get.to(const ScreenOne());
+
+                  //Routes
+                  Get.toNamed('/ScreenOne');
                 },
+                title: const Text('GetX navigation Routes'),
+                subtitle: const Text('Click here to goto next screen'),
               ),
             )
           ],
