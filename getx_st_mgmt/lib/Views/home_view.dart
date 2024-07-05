@@ -147,6 +147,15 @@ class _HomeViewState extends State<HomeView> {
                   subtitle: const Text('Click Here to GoTo That screen'),
                 ),
               ),
+              Card(
+                child: ListTile(
+                  onTap: () {
+                    Get.toNamed('/FavAppScreen');
+                  },
+                  title: const Text('Flutter GetX Mark Favourite App'),
+                  subtitle: const Text('Click Here to GoTo That screen'),
+                ),
+              ),
             ],
           ),
         ),

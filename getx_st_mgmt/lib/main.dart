@@ -7,6 +7,7 @@ import 'package:getx_st_mgmt/Views/language_translation.dart';
 import 'package:getx_st_mgmt/Views/screen_one.dart';
 import 'package:getx_st_mgmt/Views/screen_two.dart';
 import 'package:getx_st_mgmt/services/translations.dart';
+import 'Views/fav_app_screen.dart';
 import 'Views/home_view.dart';
 
 void main() {
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/CounterView', page: () => const CounterView()),
         GetPage(name: '/ExampleTwo', page: () => const ExampleTwo()),
         GetPage(name: '/ExampleThree', page: () => const ExampleThree()),
+        GetPage(name: '/FavAppScreen', page: () => const FavAppScreen()),
         GetPage(name: '/ScreenTwo', page: () => const ScreenTwo()),
         GetPage(
             name: '/LangTranslationScr',
