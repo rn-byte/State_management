@@ -13,6 +13,7 @@ class _ExampleThreeState extends State<ExampleThree> {
   final ExmapleThreeController controller = Get.put(ExmapleThreeController());
   @override
   Widget build(BuildContext context) {
+    debugPrint('Build');
     return Scaffold(
       appBar: AppBar(
         title: const Text("GetX Examole 3"),
@@ -21,20 +22,26 @@ class _ExampleThreeState extends State<ExampleThree> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Obx(
-              () => Text('${controller.val.value}'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text('Notification'),
+                Obx(() => Switch(
+                      value: controller.val.value,
+                      onChanged: (value) {
+                        controller.setNotification(value);
+                      },
+                    )),
+              ],
             ),
             const SizedBox(
               height: 60,
             ),
-            Obx(() => Switch(
-                  value: controller.val.value,
-                  onChanged: (value) {
-                    controller.setNotification(value);
-                  },
-                )),
+            Obx(
+              () => Text('${controller.val.value}'),
+            ),
           ],
         ),
       ),
