@@ -127,6 +127,15 @@ class _HomeViewState extends State<HomeView> {
                 subtitle: const Text('Click Here to GoTo That screen'),
               ),
             ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Get.toNamed('/ExampleTwo');
+                },
+                title: const Text('Flutter GetX Example Two'),
+                subtitle: const Text('Click Here to GoTo That screen'),
+              ),
+            ),
           ],
         ),
       ),
