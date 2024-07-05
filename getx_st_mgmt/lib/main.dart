@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_st_mgmt/Views/language_translation.dart';
 import 'package:getx_st_mgmt/Views/screen_one.dart';
 import 'package:getx_st_mgmt/Views/screen_two.dart';
+import 'package:getx_st_mgmt/services/translations.dart';
 import 'Views/home_view.dart';
 
 void main() {
@@ -16,6 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeController themeController = Get.put(ThemeController());
     return GetMaterialApp(
+      //Flutter GetX localization & Change App Language
+      locale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
+      translations: Languages(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       darkTheme: ThemeData.dark(),
@@ -30,6 +36,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/', page: () => const HomeView()),
         GetPage(name: '/ScreenOne', page: () => const ScreenOne()),
         GetPage(name: '/ScreenTwo', page: () => const ScreenTwo()),
+        GetPage(
+            name: '/LangTranslationScr',
+            page: () => const LanguageTranslation()),
       ],
     );
   }

@@ -20,12 +20,14 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: Colors.blue,
       ),
       body: SafeArea(
-        child: Center(
-            child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('This is GetX Tutorial'),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text('This is GetX Tutorial'),
+            ),
             Card(
               child: ListTile(
                 title: const Text('This is GetX Dialog.'),
@@ -105,9 +107,19 @@ class _HomeViewState extends State<HomeView> {
                 title: const Text('GetX navigation Routes'),
                 subtitle: const Text('Click here to goto next screen'),
               ),
+            ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Get.toNamed('/LangTranslationScr');
+                },
+                title: const Text(
+                    'Flutter GetX localization & Change App Language'),
+                subtitle: const Text('Click Here to GoTo That screen'),
+              ),
             )
           ],
-        )),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
