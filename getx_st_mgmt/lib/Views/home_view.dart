@@ -156,6 +156,15 @@ class _HomeViewState extends State<HomeView> {
                   subtitle: const Text('Click Here to GoTo That screen'),
                 ),
               ),
+              Card(
+                child: ListTile(
+                  onTap: () {
+                    Get.toNamed('/ImagePickerView');
+                  },
+                  title: const Text('Flutter GetX Image Picker'),
+                  subtitle: const Text('Click Here to GoTo That screen'),
+                ),
+              ),
             ],
           ),
         ),

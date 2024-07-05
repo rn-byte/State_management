@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_st_mgmt/Views/counter_view.dart';
 import 'package:getx_st_mgmt/Views/example_three.dart';
 import 'package:getx_st_mgmt/Views/example_two.dart';
+import 'package:getx_st_mgmt/Views/image_picker_view.dart';
 import 'package:getx_st_mgmt/Views/language_translation.dart';
 import 'package:getx_st_mgmt/Views/screen_one.dart';
 import 'package:getx_st_mgmt/Views/screen_two.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ExampleTwo', page: () => const ExampleTwo()),
         GetPage(name: '/ExampleThree', page: () => const ExampleThree()),
         GetPage(name: '/FavAppScreen', page: () => const FavAppScreen()),
+        GetPage(name: '/ImagePickerView', page: () => const ImagePickerView()),
         GetPage(name: '/ScreenTwo', page: () => const ScreenTwo()),
         GetPage(
             name: '/LangTranslationScr',
