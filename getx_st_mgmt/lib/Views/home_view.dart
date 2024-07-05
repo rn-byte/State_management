@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
+import '../main.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -11,6 +12,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       appBar: AppBar(
         title: const Text("GetX"),
@@ -62,14 +64,16 @@ class _HomeViewState extends State<HomeView> {
                           leading: const Icon(Icons.light_mode),
                           title: const Text('Light Mode'),
                           onTap: () {
-                            Get.changeThemeMode(ThemeMode.light);
+                            themeController.changeThemeMode(ThemeMode.light);
+                            //Get.changeThemeMode(ThemeMode.light);
                           },
                         ),
                         ListTile(
                           leading: const Icon(Icons.dark_mode),
                           title: const Text('Dark Mode'),
                           onTap: () {
-                            Get.changeThemeMode(ThemeMode.dark);
+                            themeController.changeThemeMode(ThemeMode.dark);
+                            //Get.changeThemeMode(ThemeMode.dark);
                           },
                         ),
                         ListTile(
@@ -77,7 +81,7 @@ class _HomeViewState extends State<HomeView> {
                           title: const Text('System Mode'),
                           onTap: () {
                             Get.changeThemeMode(ThemeMode.system);
-                          },
+                          }, //
                         ),
                       ],
                     ),
