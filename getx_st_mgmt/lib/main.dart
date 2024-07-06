@@ -7,9 +7,11 @@ import 'package:getx_st_mgmt/Views/image_picker_view.dart';
 import 'package:getx_st_mgmt/Views/language_translation.dart';
 import 'package:getx_st_mgmt/Views/screen_one.dart';
 import 'package:getx_st_mgmt/Views/screen_two.dart';
+import 'package:getx_st_mgmt/login%20&%20signup/screen/signup_screen.dart';
 import 'package:getx_st_mgmt/services/translations.dart';
 import 'Views/fav_app_screen.dart';
 import 'Views/home_view.dart';
+import 'login & signup/screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ExampleTwo', page: () => const ExampleTwo()),
         GetPage(name: '/ExampleThree', page: () => const ExampleThree()),
         GetPage(name: '/FavAppScreen', page: () => const FavAppScreen()),
+        GetPage(name: '/LoginScreen', page: () => const LoginScreen()),
+        GetPage(name: '/SignupScreen', page: () => const SignupScreen()),
         GetPage(name: '/ImagePickerView', page: () => const ImagePickerView()),
         GetPage(name: '/ScreenTwo', page: () => const ScreenTwo()),
         GetPage(

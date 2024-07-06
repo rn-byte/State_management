@@ -165,6 +165,15 @@ class _HomeViewState extends State<HomeView> {
                   subtitle: const Text('Click Here to GoTo That screen'),
                 ),
               ),
+              Card(
+                child: ListTile(
+                  onTap: () {
+                    Get.offAndToNamed('/LoginScreen');
+                  },
+                  title: const Text('Login and Signup with GetX'),
+                  subtitle: const Text('Click Here to GoTo That screen'),
+                ),
+              ),
             ],
           ),
         ),
