@@ -29,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
                 padding: EdgeInsets.all(15.0),
                 child: Text('This is GetX Tutorial'),
               ),
+              //Image.asset('assets/images/peter.jpg'),
               Card(
                 child: ListTile(
                   title: const Text('This is GetX Dialog.'),
