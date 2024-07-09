@@ -32,7 +32,10 @@ class _SwitchScreenState extends State<SwitchScreen> {
               children: [
                 const Text('Notifications'),
                 BlocBuilder<SwitchBloc, SwitchState>(
+                  buildWhen: (previous, current) =>
+                      previous.isSwitched != current.isSwitched,
                   builder: (context, state) {
+                    debugPrint('notification');
                     return Switch(
                         value: state.isSwitched,
                         onChanged: (newValue) {
@@ -47,14 +50,36 @@ class _SwitchScreenState extends State<SwitchScreen> {
             const SizedBox(
               height: 30,
             ),
-            Container(
-              height: 200,
-              color: Colors.red.withOpacity(.2),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              buildWhen: (previous, current) =>
+                  previous.slider != current.slider,
+              builder: (context, state) {
+                debugPrint('Container');
+                return Container(
+                  height: 200,
+                  color: Colors.red.withOpacity(state.slider),
+                );
+              },
             ),
             const SizedBox(
               height: 50,
             ),
-            Slider(value: .4, onChanged: (value) {}),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              buildWhen: (previous, current) =>
+                  previous.slider != current.slider,
+              builder: (context, state) {
+                debugPrint('Slider');
+                return Slider(
+                    value: state.slider,
+                    onChanged: (value) {
+                      // debugPrint(value.toString());
+                      //debugPrint(state.slider.toString());
+                      context
+                          .read<SwitchBloc>()
+                          .add(SliderEvents(slider: value));
+                    });
+              },
+            )
           ],
         ),
       ),
