@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc_st_mgmt/bloc/image_picker/image_picker_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/image_picker/image_picker_events.dart';
 import 'package:bloc_st_mgmt/bloc/image_picker/image_picker_state.dart';
@@ -42,19 +41,14 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
             const SizedBox(
               height: 50,
             ),
-            BlocBuilder<ImagePickerBloc, ImagePickerState>(
-              builder: (context, state) {
-                return TextButton(
-                  onPressed: () {
-                    context.read<ImagePickerBloc>().add(GalleryImageCapture());
-                  },
-                  style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStatePropertyAll(Colors.blue[200])),
-                  child: const Text('Pick Image'),
-                );
+            TextButton(
+              onPressed: () {
+                context.read<ImagePickerBloc>().add(GalleryImageCapture());
               },
-            )
+              style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.blue[200])),
+              child: const Text('Pick Image'),
+            ),
           ],
         ),
       ),
