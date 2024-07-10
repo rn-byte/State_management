@@ -14,13 +14,13 @@ class TodoBlock extends Bloc<TodoEvents, TodoState> {
   void _addTodo(AddTodoEvent events, Emitter<TodoState> emit) async {
     taskList.add(events.taskName);
     TodoService.addData(taskList);
-    emit(state.copyWith(toDoVal: await TodoService.getData()));
+    emit(state.copyWith(toDoVal: List.from(await TodoService.getData())));
   }
 
   void _removeTodo(RemoveTodoEvent events, Emitter<TodoState> emit) async {
     taskList.remove(events.taskObj);
     TodoService.addData(taskList);
-    emit(state.copyWith(toDoVal: await TodoService.getData()));
+    emit(state.copyWith(toDoVal: List.from(await TodoService.getData())));
   }
 
   void _displayTodo(DisplayTodoEvent events, Emitter<TodoState> emit) async {

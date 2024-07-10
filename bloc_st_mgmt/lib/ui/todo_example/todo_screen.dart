@@ -47,6 +47,7 @@ class _TodoScreenState extends State<TodoScreen> {
   void initState() {
     super.initState();
     getData();
+    context.read<TodoBlock>().add(const DisplayTodoEvent());
   }
 
   @override
