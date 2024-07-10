@@ -18,3 +18,10 @@ class RemoveTodoEvent extends TodoEvents {
   @override
   List<Object?> get props => [taskObj];
 }
+
+class DisplayTodoEvent extends TodoEvents {
+  const DisplayTodoEvent();
+
+  @override
+  List<Object?> get props => [];
+}

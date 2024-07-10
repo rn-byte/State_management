@@ -1,4 +1,5 @@
 import 'package:bloc_st_mgmt/ui/counter_example/counter_screen.dart';
+import 'package:bloc_st_mgmt/ui/favourite_app/favourite_app_screen.dart';
 import 'package:bloc_st_mgmt/ui/image_picker_example/image_picker.dart';
 import 'package:bloc_st_mgmt/ui/switch_example/switch_screen.dart';
 import 'package:bloc_st_mgmt/ui/todo_example/todo_screen.dart';
@@ -80,6 +81,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: const Text('ToDO Example'),
                 subtitle:
                     const Text('Flutter Bloc Insert & Delete Data from List'),
+                trailing: const Icon(Icons.arrow_circle_right_outlined),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FavouriteAppScreen(),
+                      ));
+                },
+                title: const Text('Favourite App Example'),
+                subtitle: const Text('Flutter Bloc Fav App'),
                 trailing: const Icon(Icons.arrow_circle_right_outlined),
               ),
             ),

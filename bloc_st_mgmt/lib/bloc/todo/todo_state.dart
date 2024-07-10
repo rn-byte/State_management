@@ -5,7 +5,9 @@ class TodoState extends Equatable {
   const TodoState({this.todoList = const []});
 
   TodoState copyWith({List<String>? toDoVal}) {
-    return TodoState(todoList: toDoVal ?? todoList);
+    return TodoState(
+      todoList: toDoVal ?? todoList,
+    );
   }
 
   @override
