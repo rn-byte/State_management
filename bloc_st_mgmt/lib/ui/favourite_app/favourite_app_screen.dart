@@ -1,4 +1,5 @@
 import 'package:bloc_st_mgmt/bloc/fav_app/fav_app_bloc.dart';
+import 'package:bloc_st_mgmt/bloc/fav_app/fav_app_events.dart';
 import 'package:bloc_st_mgmt/bloc/fav_app/fav_app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,12 @@ class FavouriteAppScreen extends StatefulWidget {
 }
 
 class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavAppBloc>().add(FetchFavAppList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +35,13 @@ class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
               return const Text('Something went wrong');
             case ListStatus.success:
               return ListView.builder(
+                itemCount: state.favItemList.length,
                 itemBuilder: (context, index) {
-                  return const ListTile();
+                  final item = state.favItemList[index];
+                  return Card(
+                      child: ListTile(
+                    title: Text(item.value.toString()),
+                  ));
                 },
               );
           }
