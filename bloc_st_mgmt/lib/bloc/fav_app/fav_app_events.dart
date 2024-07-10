@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class FavAppEvents extends Equatable {
+abstract class FavAppEvents extends Equatable {
   const FavAppEvents();
 
   @override
