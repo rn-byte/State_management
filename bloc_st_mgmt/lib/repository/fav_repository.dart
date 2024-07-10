@@ -7,6 +7,9 @@ class FavRepository {
   }
 
   List<FavItemsModel> _generateList(int length) {
-    return List.generate(length, (index) => FavItemsModel(id: index.toString(), value: 'Item : $index'),)
+    return List.generate(
+      length,
+      (index) => FavItemsModel(id: index.toString(), value: 'Item : $index'),
+    );
   }
 }
