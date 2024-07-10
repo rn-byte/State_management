@@ -26,8 +26,24 @@ class FavAppBloc extends Bloc<FavAppEvents, FavAppState> {
   void _addFavItem(FavouriteItem event, Emitter<FavAppState> emit) async {
     final index =
         favItemList.indexWhere((element) => element.id == event.item.id);
+
+    if (event.item.isDeleting) {
+      if (tempFavItemList.contains(favItemList[index])) {
+        tempFavItemList.remove(favItemList[index]);
+        tempFavItemList.add(event.item);
+      }
+    } else {
+      if (tempFavItemList.contains(favItemList[index])) {
+        tempFavItemList.remove(favItemList[index]);
+        tempFavItemList.add(event.item);
+      }
+    }
+
     favItemList[index] = event.item;
-    emit(state.copyWith(favItemList: List.from(favItemList)));
+
+    emit(state.copyWith(
+        favItemList: List.from(favItemList),
+        tempFavItemList: List.from(tempFavItemList)));
   }
 
   void _selectItem(SelectItem event, Emitter<FavAppState> emit) async {

@@ -75,7 +75,16 @@ class _FavouriteAppScreenState extends State<FavouriteAppScreen> {
                           }
                         },
                       ),
-                      title: Text(item.value.toString()),
+                      title: Text(
+                        item.value.toString(),
+                        style: state.tempFavItemList.contains(item)
+                            ? const TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                decorationColor: Colors.black,
+                                decorationThickness: 2.7,
+                              )
+                            : null,
+                      ),
                       trailing: IconButton(
                           onPressed: () {
                             FavItemsModel itemsModel = FavItemsModel(
