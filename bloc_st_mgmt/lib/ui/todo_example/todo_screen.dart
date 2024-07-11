@@ -17,41 +17,15 @@ class _TodoScreenState extends State<TodoScreen> {
   List<String> datum = [];
   TextEditingController todoController = TextEditingController();
 
-  // Future<void> addData(String todo) async {
-  //   SharedPreferences sp = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     datum.add(todo);
-  //     sp.setStringList('todo', datum);
-  //     debugPrint(datum.toString());
-  //   });
-  // }
-
-  Future<void> getData() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    setState(() {
-      datum = sp.getStringList('todo') ?? [];
-      debugPrint('TODO Screen Data check: ${datum.toString()}');
-    });
-  }
-
-  // Future<void> removeData(String value) async {
-  //   SharedPreferences sp = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     datum.remove(value);
-  //     sp.setStringList('todo', datum);
-  //     debugPrint(datum.toString());
-  //   });
-  // }
-
   @override
   void initState() {
     super.initState();
-    getData();
     context.read<TodoBlock>().add(const DisplayTodoEvent());
   }
 
   @override
   Widget build(BuildContext context) {
+    //context.read<TodoBlock>().add(const DisplayTodoEvent());
     debugPrint("BUILD");
     return Scaffold(
       appBar: AppBar(
