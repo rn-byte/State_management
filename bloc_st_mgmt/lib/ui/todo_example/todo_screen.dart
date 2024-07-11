@@ -73,15 +73,16 @@ class _TodoScreenState extends State<TodoScreen> {
                     itemBuilder: (context, index) {
                       return Card(
                         child: ListTile(
-                          title: Text(state.todoList[index]),
-                          trailing: GestureDetector(
                             onTap: () {
-                              context.read<TodoBlock>().add(RemoveTodoEvent(
-                                  taskObj: state.todoList[index]));
+                              debugPrint(state.todoList[index].toString());
                             },
-                            child: const Icon(Icons.delete),
-                          ),
-                        ),
+                            title: Text(state.todoList[index]),
+                            trailing: IconButton(
+                                onPressed: () {
+                                  context.read<TodoBlock>().add(RemoveTodoEvent(
+                                      taskObj: state.todoList[index]));
+                                },
+                                icon: const Icon(Icons.delete))),
                       );
                     },
                   );
@@ -128,11 +129,19 @@ class _TodoScreenState extends State<TodoScreen> {
                       TextButton(
                           onPressed: () {
                             // addData(todoController.text.toString());
-
-                            context.read<TodoBlock>().add(AddTodoEvent(
-                                taskName: todoController.text.toString()));
-                            todoController.clear();
-                            Navigator.pop(context);
+                            if (todoController.text.toString() != '' ||
+                                todoController.text.toString().isNotEmpty) {
+                              context.read<TodoBlock>().add(AddTodoEvent(
+                                  taskName: todoController.text.toString()));
+                              todoController.clear();
+                              Navigator.pop(context);
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content: Text('Add a Todo'),
+                                backgroundColor: Colors.white,
+                              ));
+                            }
                           },
                           child: const Text('Add')),
                       TextButton(
