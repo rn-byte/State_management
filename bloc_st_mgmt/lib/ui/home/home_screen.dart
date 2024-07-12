@@ -98,6 +98,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 trailing: const Icon(Icons.arrow_circle_right_outlined),
               ),
             ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FavouriteAppScreen(),
+                      ));
+                },
+                title: const Text('Post api Example'),
+                subtitle: const Text('Flutter Bloc example'),
+                trailing: const Icon(Icons.arrow_circle_right_outlined),
+              ),
+            ),
           ],
         ),
       ),

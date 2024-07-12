@@ -20,12 +20,12 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<TodoBlock>().add(const DisplayTodoEvent());
+    //context.read<TodoBlock>().add(const DisplayTodoEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    //context.read<TodoBlock>().add(const DisplayTodoEvent());
+    context.read<TodoBlock>().add(const DisplayTodoEvent());
     debugPrint("BUILD");
     return Scaffold(
       appBar: AppBar(
