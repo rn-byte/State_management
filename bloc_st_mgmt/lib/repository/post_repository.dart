@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:bloc_st_mgmt/models/post_model/post_model.dart';
 import 'package:http/http.dart' as http;
@@ -20,6 +21,8 @@ class PostRepository {
           );
         }).toList();
       }
+    } on SocketException {
+      throw 'No Internet Connection';
     } catch (e) {
       throw e.toString();
     }

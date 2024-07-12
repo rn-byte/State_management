@@ -1,6 +1,7 @@
 import 'package:bloc_st_mgmt/bloc/counter/counter_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/fav_app/fav_app_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/image_picker/image_picker_bloc.dart';
+import 'package:bloc_st_mgmt/bloc/post/post_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/switch/switch_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/todo/todo_block.dart';
 import 'package:bloc_st_mgmt/repository/fav_repository.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TodoBlock()),
         BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
         BlocProvider(create: (context) => FavAppBloc(FavRepository())),
+        BlocProvider(create: (context) => PostBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
