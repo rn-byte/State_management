@@ -9,8 +9,8 @@ class PostBloc extends Bloc<PostEvents, PostState> {
   PostBloc() : super(const PostState()) {
     on<FetchPost>(fetchPost);
   }
-  void fetchPost(FetchPost event, Emitter<PostState> emit) {
-    postRepository.fetchPost().then((value) {
+  void fetchPost(FetchPost event, Emitter<PostState> emit) async {
+    await postRepository.fetchPost().then((value) {
       emit(state.compyWith(
         postStatus: PostStatus.success,
         message: 'Success',

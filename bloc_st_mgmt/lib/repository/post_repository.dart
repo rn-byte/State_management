@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -23,6 +24,8 @@ class PostRepository {
       }
     } on SocketException {
       throw 'No Internet Connection';
+    } on TimeoutException {
+      throw 'Timeout';
     } catch (e) {
       throw e.toString();
     }
