@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
                               ..showSnackBar(
-                                  SnackBar(content: Text('Login Error')));
+                                  SnackBar(content: Text(state.message)));
                           }
                           if (state.loginStatus == LoginStatus.loading) {
                             ScaffoldMessenger.of(context)
@@ -135,8 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (state.loginStatus == LoginStatus.success) {
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
-                              ..showSnackBar(const SnackBar(
-                                  content: Text('Login successful')));
+                              ..showSnackBar(
+                                  SnackBar(content: Text(state.message)));
                           }
                         },
                         child: BlocBuilder<LoginSignupBloc, LoginSignupState>(

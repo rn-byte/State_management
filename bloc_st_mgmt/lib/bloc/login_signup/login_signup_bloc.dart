@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:bloc_st_mgmt/utils/enum/enums.dart';
@@ -36,13 +38,13 @@ class LoginSignupBloc extends Bloc<LoginSignupEvents, LoginSignupState> {
 
     final response =
         await http.post(Uri.parse('https://reqres.in/api/login'), body: data);
+    var msg = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      var msg = response.body;
       emit(state.copyWith(
-          loginStatus: LoginStatus.success, message: msg.toString()));
+          loginStatus: LoginStatus.success, message: msg['token'].toString()));
     } else {
       emit(state.copyWith(
-          loginStatus: LoginStatus.error, message: 'User not Found'));
+          loginStatus: LoginStatus.error, message: msg['error'].toString()));
     }
   }
 
