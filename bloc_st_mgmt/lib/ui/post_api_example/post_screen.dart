@@ -41,17 +41,56 @@ class _PostScreenState extends State<PostScreen> {
                 child: Text(state.message.toString()),
               );
             case PostStatus.success:
-              return ListView.builder(
-                itemCount: state.postList.length,
-                itemBuilder: (context, index) {
-                  final item = state.postList[index];
-                  return Card(
-                    child: ListTile(
-                      title: Text(item.email),
-                      subtitle: Text(item.body),
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: TextFormField(
+                      //controller: ,
+
+                      onChanged: (filterKey) {
+                        context
+                            .read<PostBloc>()
+                            .add(SearchPost(stSearch: filterKey));
+                      },
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(17.0),
+                          hintText: 'Search with Email',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50))),
                     ),
-                  );
-                },
+                  ),
+                  Expanded(
+                    child: state.stMessage.isNotEmpty
+                        ? Center(
+                            child: Text(state.stMessage),
+                          )
+                        : ListView.builder(
+                            itemCount: state.tempPostList.isEmpty
+                                ? state.postList.length
+                                : state.tempPostList.length,
+                            itemBuilder: (context, index) {
+                              if (state.tempPostList.isNotEmpty) {
+                                final item = state.tempPostList[index];
+                                return Card(
+                                  child: ListTile(
+                                    title: Text(item.email),
+                                    subtitle: Text(item.body),
+                                  ),
+                                );
+                              } else {
+                                final item = state.postList[index];
+                                return Card(
+                                  child: ListTile(
+                                    title: Text(item.email),
+                                    subtitle: Text(item.body),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                  ),
+                ],
               );
           }
         },
