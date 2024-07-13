@@ -54,9 +54,13 @@ class _PostScreenState extends State<PostScreen> {
                             .add(SearchPost(stSearch: filterKey));
                       },
                       decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.black,
                           contentPadding: const EdgeInsets.all(17.0),
                           hintText: 'Search with Email',
+                          prefixIcon: const Icon(Icons.search_outlined),
                           border: OutlineInputBorder(
+                              borderSide: const BorderSide(width: 0.01),
                               borderRadius: BorderRadius.circular(50))),
                     ),
                   ),
