@@ -12,61 +12,89 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
+  late CounterBloc _counterBloc;
+  @override
+  void initState() {
+    _counterBloc = CounterBloc();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _counterBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     debugPrint("BUILD");
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bloc Counter Example'),
-        centerTitle: true,
-        backgroundColor: Colors.blue[200],
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          BlocBuilder<CounterBloc, CounterState>(
-            builder: (context, state) {
-              return Center(
-                child: Text(
-                  state.counter.toString(),
-                  style: const TextStyle(
-                      fontSize: 30, fontWeight: FontWeight.bold),
+    return BlocProvider(
+      create: (context) => _counterBloc,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Bloc Counter Example'),
+          centerTitle: true,
+          backgroundColor: Colors.blue[200],
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return Center(
+                  child: Text(
+                    state.counter.toString(),
+                    style: const TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                BlocBuilder<CounterBloc, CounterState>(
+                  buildWhen: (previous, current) => false,
+                  builder: (context, state) {
+                    debugPrint('build');
+                    return TextButton(
+                      onPressed: () {
+                        // debugPrint('build');
+                        context.read<CounterBloc>().add(IncrementCounter());
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.blueAccent[100])),
+                      child: const Text("Increment"),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-          const SizedBox(
-            height: 80,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () {
-                  // debugPrint('build');
-                  context.read<CounterBloc>().add(IncrementCounter());
-                },
-                style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(Colors.blueAccent[100])),
-                child: const Text("Increment"),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              TextButton(
-                onPressed: () {
-                  context.read<CounterBloc>().add(DecrementConuter());
-                },
-                style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(Colors.blueAccent[100])),
-                child: const Text("Decrement"),
-              ),
-            ],
-          )
-        ],
+                const SizedBox(
+                  width: 50,
+                ),
+                BlocBuilder<CounterBloc, CounterState>(
+                  buildWhen: (previous, current) => false,
+                  builder: (context, state) {
+                    debugPrint('build2');
+                    return TextButton(
+                      onPressed: () {
+                        context.read<CounterBloc>().add(DecrementConuter());
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(Colors.blueAccent[100])),
+                      child: const Text("Decrement"),
+                    );
+                  },
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

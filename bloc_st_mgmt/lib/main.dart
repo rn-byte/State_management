@@ -1,4 +1,3 @@
-import 'package:bloc_st_mgmt/bloc/counter/counter_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/fav_app/fav_app_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/image_picker/image_picker_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/post/post_bloc.dart';
@@ -22,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => CounterBloc()),
+        //BlocProvider(create: (context) => CounterBloc()),
+
         BlocProvider(create: (context) => SwitchBloc()),
         BlocProvider(create: (context) => TodoBlock()),
         BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
