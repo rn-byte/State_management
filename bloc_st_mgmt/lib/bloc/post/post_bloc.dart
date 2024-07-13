@@ -17,6 +17,8 @@ class PostBloc extends Bloc<PostEvents, PostState> {
         postList: value,
       ));
     }).onError((error, staceTrace) {
+      // print(error);
+      // print(staceTrace);
       emit(state.compyWith(
         postStatus: PostStatus.failure,
         message: error.toString(),

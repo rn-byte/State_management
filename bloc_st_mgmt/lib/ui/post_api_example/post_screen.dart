@@ -2,7 +2,6 @@ import 'package:bloc_st_mgmt/bloc/post/post_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/post/post_events.dart';
 import 'package:bloc_st_mgmt/bloc/post/post_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/enum/enums.dart';
@@ -45,10 +44,11 @@ class _PostScreenState extends State<PostScreen> {
               return ListView.builder(
                 itemCount: state.postList.length,
                 itemBuilder: (context, index) {
+                  final item = state.postList[index];
                   return Card(
                     child: ListTile(
-                      title: Text(state.postList[index].name),
-                      subtitle: Text(state.postList[index].email),
+                      title: Text(item.email),
+                      subtitle: Text(item.body),
                     ),
                   );
                 },
