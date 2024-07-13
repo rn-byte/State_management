@@ -14,14 +14,22 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
+  //late PostBloc _postBloc;
   @override
   void initState() {
     super.initState();
     context.read<PostBloc>().add(FetchPost());
   }
 
+  // @override
+  // void dispose() {
+  //   _postBloc.close();
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
+    debugPrint('BUILD');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bloc Get Api example'),
@@ -30,6 +38,7 @@ class _PostScreenState extends State<PostScreen> {
       ),
       body: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
+          debugPrint('post build');
           switch (state.postStatus) {
             case PostStatus.loading:
               return const Center(
@@ -46,8 +55,6 @@ class _PostScreenState extends State<PostScreen> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: TextFormField(
-                      //controller: ,
-
                       onChanged: (filterKey) {
                         context
                             .read<PostBloc>()
