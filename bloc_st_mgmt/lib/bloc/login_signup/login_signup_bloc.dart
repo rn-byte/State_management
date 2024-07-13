@@ -1,16 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_st_mgmt/repository/login_signup_repository.dart';
+import 'package:http/http.dart' as http;
 import 'package:bloc_st_mgmt/utils/enum/enums.dart';
 import 'package:equatable/equatable.dart';
 part 'login_signup_events.dart';
 part 'login_signup_state.dart';
 
 class LoginSignupBloc extends Bloc<LoginSignupEvents, LoginSignupState> {
-  final LoginSignupRepository _loginSignupRepository = LoginSignupRepository();
+  //final LoginSignupRepository _loginSignupRepository = LoginSignupRepository();
   LoginSignupBloc() : super(const LoginSignupState()) {
     on<EmailChangedEvent>(_onEmailChanged);
     on<PassChangedEvent>(_onPasswordChanged);
     on<LoginApi>(_loginApi);
+    on<PassObscure>(_obscurePass);
   }
 
   void _onEmailChanged(
@@ -27,22 +28,26 @@ class LoginSignupBloc extends Bloc<LoginSignupEvents, LoginSignupState> {
 
   void _loginApi(LoginApi event, Emitter<LoginSignupState> emit) async {
     emit(state.copyWith(loginStatus: LoginStatus.loading));
-    print(state.email.toString());
-    print(state.password.toString());
+
     Map data = {
       'email': state.email.toString(),
-      'password': state.password,
+      'password': state.password.toString(),
     };
-    print(data.toString());
-    await _loginSignupRepository.hitLogin(data).then((value) {
+
+    final response =
+        await http.post(Uri.parse('https://reqres.in/api/login'), body: data);
+    if (response.statusCode == 200) {
+      var msg = response.body;
       emit(state.copyWith(
-        message: 'Login Success : Token:  ${value['token'].toString()}',
-        loginStatus: LoginStatus.success,
-      ));
-    }).onError((error, stackTrace) {
+          loginStatus: LoginStatus.success, message: msg.toString()));
+    } else {
       emit(state.copyWith(
-          message: 'Login Error : ${error.toString}',
-          loginStatus: LoginStatus.error));
-    });
+          loginStatus: LoginStatus.error, message: 'User not Found'));
+    }
+  }
+
+  void _obscurePass(PassObscure event, Emitter<LoginSignupState> emit) {
+    //print('event ${state.obscure}');
+    emit(state.copyWith(obscure: !state.obscure));
   }
 }

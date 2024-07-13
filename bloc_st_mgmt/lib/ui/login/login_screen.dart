@@ -77,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           current.password != previous.password,
                       builder: (context, state) {
                         return TextFormField(
+                          obscureText: state.obscure,
                           focusNode: passFocus,
                           onChanged: (value) {
                             context
@@ -87,9 +88,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: 'Enter your Password',
                             prefixIcon: const Icon(Icons.lock_outline),
                             suffixIcon: GestureDetector(
-                              onTap: () {},
-                              child: const Icon(
-                                Icons.visibility,
+                              onTap: () {
+                                print(state.obscure);
+                                context
+                                    .read<LoginSignupBloc>()
+                                    .add(PassObscure());
+                              },
+                              child: Icon(
+                                state.obscure
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
                               ),
                             ),
                             label: const Text('Enter your Password'),
@@ -111,16 +119,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: BlocListener<LoginSignupBloc, LoginSignupState>(
                         listener: (context, state) {
                           if (state.loginStatus == LoginStatus.error) {
+                            // print(state.message);
+                            // print(LoginStat.loginStatus);
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
-                              ..showSnackBar(const SnackBar(
-                                  content: Text('Login unsuccessful')));
-                          } else if (state.loginStatus == LoginStatus.loading) {
+                              ..showSnackBar(
+                                  SnackBar(content: Text('Login Error')));
+                          }
+                          if (state.loginStatus == LoginStatus.loading) {
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
                               ..showSnackBar(
                                   const SnackBar(content: Text('Submitting')));
-                          } else if (state.loginStatus == LoginStatus.success) {
+                          }
+                          if (state.loginStatus == LoginStatus.success) {
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
                               ..showSnackBar(const SnackBar(
@@ -128,7 +140,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         child: BlocBuilder<LoginSignupBloc, LoginSignupState>(
+                          buildWhen: (previous, current) => false,
                           builder: (context, state) {
+                            print("LOGIN BUILD");
                             return ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor:

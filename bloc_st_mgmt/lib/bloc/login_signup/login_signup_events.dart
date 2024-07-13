@@ -28,3 +28,13 @@ class PassChangedEvent extends LoginSignupEvents {
 }
 
 class LoginApi extends LoginSignupEvents {}
+
+class PassObscure extends LoginSignupEvents {
+  // final bool obscure;
+  // const PassObscure({
+  //   required this.obscure,
+  // });
+
+  // @override
+  // List<Object?> get props => [obscure];
+}
