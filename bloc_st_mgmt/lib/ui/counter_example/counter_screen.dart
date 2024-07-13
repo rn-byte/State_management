@@ -28,15 +28,15 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     debugPrint("BUILD");
-    return BlocProvider(
-      create: (context) => _counterBloc,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Bloc Counter Example'),
-          centerTitle: true,
-          backgroundColor: Colors.blue[200],
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Bloc Counter Example'),
+        centerTitle: true,
+        backgroundColor: Colors.blue[200],
+      ),
+      body: BlocProvider(
+        create: (context) => _counterBloc,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
