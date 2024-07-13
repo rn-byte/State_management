@@ -1,5 +1,6 @@
 import 'package:bloc_st_mgmt/bloc/login_signup/login_signup_bloc.dart';
 import 'package:bloc_st_mgmt/ui/signup/signup_screen.dart';
+import 'package:bloc_st_mgmt/utils/enum/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<LoginSignupBloc>(
       create: (context) => _loginSignupBloc,
       child: Scaffold(
           appBar: AppBar(
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 .read<LoginSignupBloc>()
                                 .add(EmailChangedEvent(uEmail: value));
                           },
-                          onFieldSubmitted: (value) {},
+                          //onFieldSubmitted: (value) {},
                           decoration: const InputDecoration(
                             hintText: 'Enter your Email',
                             prefixIcon: Icon(Icons.person_3_outlined),
@@ -107,14 +108,41 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 50,
                       width: 280,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                WidgetStatePropertyAll(Colors.blue[200])),
-                        onPressed: () {},
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                      child: BlocListener<LoginSignupBloc, LoginSignupState>(
+                        listener: (context, state) {
+                          if (state.loginStatus == LoginStatus.error) {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(const SnackBar(
+                                  content: Text('Login unsuccessful')));
+                          } else if (state.loginStatus == LoginStatus.loading) {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(
+                                  const SnackBar(content: Text('Submitting')));
+                          } else if (state.loginStatus == LoginStatus.success) {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(const SnackBar(
+                                  content: Text('Login successful')));
+                          }
+                        },
+                        child: BlocBuilder<LoginSignupBloc, LoginSignupState>(
+                          builder: (context, state) {
+                            return ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      WidgetStatePropertyAll(Colors.blue[200])),
+                              onPressed: () {
+                                context.read<LoginSignupBloc>().add(LoginApi());
+                              },
+                              child: const Text(
+                                'Login',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),

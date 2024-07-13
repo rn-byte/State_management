@@ -7,7 +7,7 @@ class LoginSignupState extends Equatable {
   final LoginStatus loginStatus;
   const LoginSignupState({
     this.email = '',
-    this.password = '',
+    this.password = 'jjjj',
     this.message = '',
     this.loginStatus = LoginStatus.initial,
   });
