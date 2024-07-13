@@ -24,7 +24,7 @@ class _PostScreenState extends State<PostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bloc Post Api example'),
+        title: const Text('Bloc Get Api example'),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
