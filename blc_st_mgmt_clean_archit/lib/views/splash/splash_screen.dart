@@ -1,3 +1,4 @@
+import 'package:blc_st_mgmt_clean_archit/config/components/loading_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Splash Screen'),
+        child: LoadingWidget(),
       ),
     );
   }
