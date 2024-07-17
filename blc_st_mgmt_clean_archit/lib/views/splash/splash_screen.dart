@@ -1,4 +1,4 @@
-import 'package:blc_st_mgmt_clean_archit/config/components/loading_widget.dart';
+import 'package:blc_st_mgmt_clean_archit/config/components/round_button.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,9 +11,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: LoadingWidget(),
+        child: RoundButton(onPress: () {}, title: 'Login'),
       ),
     );
   }
