@@ -16,7 +16,7 @@ class LoginButtonWidget extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginStates>(
       buildWhen: (previous, current) => false,
       builder: (context, state) {
-        print('LoginButton');
+        // print('LoginButton');
         return RoundButton(
           width: 250,
           buttonColor: AppColors.primaryButtonColor,
