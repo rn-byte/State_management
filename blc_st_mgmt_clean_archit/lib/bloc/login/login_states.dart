@@ -4,29 +4,29 @@ class LoginStates extends Equatable {
   final String email;
   final String password;
   final Status status;
-  final String error;
+  final String message;
 
   const LoginStates({
     this.email = '',
     this.password = '',
     this.status = Status.initial,
-    this.error = '',
+    this.message = '',
   });
 
   LoginStates copyWith({
     String? email,
     String? password,
     Status? status,
-    String? error,
+    String? message,
   }) {
     return LoginStates(
       email: email ?? this.email,
       password: password ?? this.password,
       status: status ?? this.status,
-      error: error ?? this.error,
+      message: message ?? this.message,
     );
   }
 
   @override
-  List<Object?> get props => [email, password, status, error];
+  List<Object?> get props => [email, password, status, message];
 }

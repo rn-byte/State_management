@@ -36,9 +36,10 @@ class InputEmailWidget extends StatelessWidget {
             if (value.toString().isEmpty) {
               return 'Email required';
             }
-            if (!Validations.emailValidator(value!)) {
-              return 'Invalid Email';
-            } else {
+            // if (!Validations.emailValidator(value!)) {
+            //   return 'Invalid Email';
+            // }
+            else {
               return null;
             }
           },
