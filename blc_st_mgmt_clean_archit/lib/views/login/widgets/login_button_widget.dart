@@ -1,4 +1,6 @@
+import 'package:blc_st_mgmt_clean_archit/bloc/login/login_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../config/colors/app_colors.dart';
 import '../../../config/components/round_button.dart';
 
@@ -11,12 +13,18 @@ class LoginButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RoundButton(
-      width: 250,
-      buttonColor: AppColors.primaryButtonColor,
-      title: 'Login',
-      onPress: () {
-        if (formKey.currentState!.validate()) {}
+    return BlocBuilder<LoginBloc, LoginStates>(
+      buildWhen: (previous, current) => false,
+      builder: (context, state) {
+        print('LoginButton');
+        return RoundButton(
+          width: 250,
+          buttonColor: AppColors.primaryButtonColor,
+          title: 'Login',
+          onPress: () {
+            if (formKey.currentState!.validate()) {}
+          },
+        );
       },
     );
   }
