@@ -9,7 +9,7 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => const SplashScreen(),
         );
-      case RoutesName.loginhScreen:
+      case RoutesName.loginScreen:
         return MaterialPageRoute(
           builder: (context) => const LoginScreen(),
         );
