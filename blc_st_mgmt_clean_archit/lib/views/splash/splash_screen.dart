@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           'Splash Screen',
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
     );
