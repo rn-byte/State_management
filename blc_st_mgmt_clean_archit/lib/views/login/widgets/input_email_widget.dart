@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class InputEmailWidget extends StatelessWidget {
-  const InputEmailWidget({super.key});
+  final FocusNode emailFocus;
+  const InputEmailWidget({super.key, required this.emailFocus});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       // controller: loginViewModel.emailController.value,
       // keyboardType: TextInputType.emailAddress,
-      // focusNode: loginViewModel.emailFocus.value,
+      focusNode: emailFocus,
       onFieldSubmitted: (value) {},
       decoration: const InputDecoration(
         hintText: 'Email',

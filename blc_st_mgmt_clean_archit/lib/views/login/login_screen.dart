@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/donot_have_account_widget.dart';
-import 'widgets/input_email_widget.dart';
-import 'widgets/input_password_widget.dart';
-import 'widgets/login_button_widget.dart';
+import 'widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,6 +10,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  FocusNode emailFocus = FocusNode();
+  FocusNode passFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +32,15 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const InputEmailWidget(),
+                InputEmailWidget(
+                  emailFocus: emailFocus,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const InputPasswordWidget(),
+                InputPasswordWidget(
+                  passFocus: emailFocus,
+                ),
                 const SizedBox(
                   height: 50,
                 ),

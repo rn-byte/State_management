@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class InputPasswordWidget extends StatelessWidget {
-  const InputPasswordWidget({super.key});
+  final FocusNode passFocus;
+  const InputPasswordWidget({super.key, required this.passFocus});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       //controller: loginViewModel.passController.value,
       //obscureText: loginViewModel.visibilityToggle.value,
-      //focusNode: loginViewModel.passFocus.value,
+      focusNode: passFocus,
       decoration: InputDecoration(
         hintText: 'Password',
         prefixIcon: const Icon(Icons.lock_outline),
@@ -31,7 +32,7 @@ class InputPasswordWidget extends StatelessWidget {
       ),
       validator: (value) {
         if (value.toString().isEmpty) {
-          return 'password required';
+          return 'Password required';
         } else {
           return null;
         }
