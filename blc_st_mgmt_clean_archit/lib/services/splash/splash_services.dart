@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SplashServices {
   void isLogin(BuildContext context) {
     Timer(
-      const Duration(seconds: 4),
+      const Duration(seconds: 2),
       () => Navigator.pushNamedAndRemoveUntil(
           context, RoutesName.loginScreen, (route) => false),
     );

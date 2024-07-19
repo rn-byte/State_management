@@ -1,5 +1,6 @@
 import 'package:blc_st_mgmt_clean_archit/bloc/login/login_bloc.dart';
 import 'package:blc_st_mgmt_clean_archit/utils/enum/enums.dart';
+import 'package:blc_st_mgmt_clean_archit/utils/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../config/colors/app_colors.dart';
@@ -18,21 +19,11 @@ class LoginButtonWidget extends StatelessWidget {
       listenWhen: (previous, current) => current.status != previous.status,
       listener: (context, state) {
         if (state.status == Status.error) {
-          // print(state.message);
-          // print(LoginStat.loginStatus);
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(content: Text(state.message)));
+          FlushBarHelper.flushErrorMessage(state.message, context);
         }
-        if (state.status == Status.loading) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(const SnackBar(content: Text('Submitting')));
-        }
+
         if (state.status == Status.success) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(content: Text(state.message)));
+          FlushBarHelper.flushSuccessMessage('Login Successfull', context);
         }
       },
       child: BlocBuilder<LoginBloc, LoginStates>(
