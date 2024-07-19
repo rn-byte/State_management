@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             prefixIcon: const Icon(Icons.lock_outline),
                             suffixIcon: GestureDetector(
                               onTap: () {
-                                print(state.obscure);
+                                debugPrint(state.obscure.toString());
                                 context
                                     .read<LoginSignupBloc>()
                                     .add(PassObscure());
@@ -117,6 +117,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       width: 280,
                       child: BlocListener<LoginSignupBloc, LoginSignupState>(
+                        listenWhen: (previous, current) =>
+                            current.loginStatus != previous.loginStatus,
                         listener: (context, state) {
                           if (state.loginStatus == LoginStatus.error) {
                             // print(state.message);
@@ -142,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: BlocBuilder<LoginSignupBloc, LoginSignupState>(
                           buildWhen: (previous, current) => false,
                           builder: (context, state) {
-                            print("LOGIN BUILD");
+                            debugPrint("LOGIN BUILD");
                             return ElevatedButton(
                               style: ButtonStyle(
                                   backgroundColor:
