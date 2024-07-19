@@ -15,6 +15,7 @@ class LoginButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginStates>(
+      listenWhen: (previous, current) => current.status != previous.status,
       listener: (context, state) {
         if (state.status == Status.error) {
           // print(state.message);
@@ -35,13 +36,14 @@ class LoginButtonWidget extends StatelessWidget {
         }
       },
       child: BlocBuilder<LoginBloc, LoginStates>(
-        buildWhen: (previous, current) => false,
+        buildWhen: (previous, current) => current.status != previous.status,
         builder: (context, state) {
-          // print('LoginButton');
+          debugPrint('LoginButton');
           return RoundButton(
             width: 250,
             buttonColor: AppColors.primaryButtonColor,
             title: 'Login',
+            loading: state.status == Status.loading ? true : false,
             onPress: () {
               if (formKey.currentState!.validate()) {
                 context.read<LoginBloc>().add(LoginApi());
