@@ -1,4 +1,5 @@
 import 'package:blc_st_mgmt_clean_archit/repository/auth/login_repository.dart';
+import 'package:blc_st_mgmt_clean_archit/services/session_manager/session_controller.dart';
 import 'package:blc_st_mgmt_clean_archit/utils/enum/enums.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -41,8 +42,10 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       'password': state.password,
     };
     emit(state.copyWith(status: Status.loading));
-    await loginRepository.loginApi(data).then((value) {
+    await loginRepository.loginApi(data).then((value) async {
       if (value.error.isEmpty) {
+        await SessionController().saveUserInPreference(value);
+        await SessionController().getUserFromPreference();
         emit(state.copyWith(
             message: 'Login Successfull', status: Status.success));
       } else {

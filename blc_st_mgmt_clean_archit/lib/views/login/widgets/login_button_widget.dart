@@ -1,4 +1,5 @@
 import 'package:blc_st_mgmt_clean_archit/bloc/login/login_bloc.dart';
+import 'package:blc_st_mgmt_clean_archit/config/routes/routes_name.dart';
 import 'package:blc_st_mgmt_clean_archit/utils/enum/enums.dart';
 import 'package:blc_st_mgmt_clean_archit/utils/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class LoginButtonWidget extends StatelessWidget {
         }
 
         if (state.status == Status.success) {
+          Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
           FlushBarHelper.flushSuccessMessage('Login Successfull', context);
         }
       },

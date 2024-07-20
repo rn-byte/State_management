@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:blc_st_mgmt_clean_archit/models/user/user_model.dart';
-import 'package:blc_st_mgmt_clean_archit/services_maganer/storage/local_storage.dart';
 import 'package:flutter/material.dart';
+
+import '../storage/local_storage.dart';
 
 class SessionController {
   static final SessionController _sessionController =
