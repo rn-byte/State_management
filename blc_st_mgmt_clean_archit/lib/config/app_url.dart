@@ -7,4 +7,9 @@ class AppUrl {
 
   static const String userListApiUrl =
       'https://webhook.site/8ce6b95b-a2de-4ea6-9411-ed77256566b0';
+
+  static var moviesBaseUrl =
+      'https://dea91516-1da3-444b-ad94-c6d0c4dfab81.mock.pstmn.io/';
+
+  static var moviesUrlEndpoint = '${moviesBaseUrl}movies_list';
 }

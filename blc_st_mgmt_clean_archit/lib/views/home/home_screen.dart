@@ -25,8 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pushReplacementNamed(context, RoutesName.loginScreen);
               });
             },
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+            child: const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Icon(Icons.logout),
             ),
           )

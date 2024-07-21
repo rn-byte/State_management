@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 class SplashServices {
   void isLogin(BuildContext context) {
-    debugPrint(SessionController().isLogin.toString());
     SessionController().getUserFromPreference().then((value) {
       if (SessionController().isLogin ?? false) {
         Timer(
