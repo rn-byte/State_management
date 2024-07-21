@@ -15,7 +15,7 @@ class NetworkApiServices implements BaseApiService {
           await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
       jsonResponse = returnResponse(response);
     } on SocketException {
-      throw NoInternetException();
+      throw NoInternetException('No Internet Connection');
     } on TimeoutException {
       throw RequestTimeout();
     }
