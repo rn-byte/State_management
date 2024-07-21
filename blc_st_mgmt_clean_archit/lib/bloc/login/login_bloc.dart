@@ -3,6 +3,7 @@ import 'package:blc_st_mgmt_clean_archit/services/session_manager/session_contro
 import 'package:blc_st_mgmt_clean_archit/utils/enum/enums.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 part 'login_states.dart';
 part 'login_event.dart';
 
@@ -44,6 +45,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
     emit(state.copyWith(status: Status.loading));
     await loginRepository.loginApi(data).then((value) async {
       if (value.error.isEmpty) {
+        debugPrint(value.toString());
         await SessionController().saveUserInPreference(value);
         await SessionController().getUserFromPreference();
         emit(state.copyWith(

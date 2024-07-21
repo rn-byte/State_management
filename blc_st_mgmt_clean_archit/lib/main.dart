@@ -1,6 +1,6 @@
 import 'package:blc_st_mgmt_clean_archit/config/routes/routes.dart';
 import 'package:blc_st_mgmt_clean_archit/config/routes/routes_name.dart';
-import 'package:blc_st_mgmt_clean_archit/repository/auth/login_mock_api_repository.dart';
+import 'package:blc_st_mgmt_clean_archit/repository/auth/login_http_api_repository.dart';
 import 'package:blc_st_mgmt_clean_archit/repository/auth/login_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -32,5 +32,5 @@ class MyApp extends StatelessWidget {
 }
 
 void serviceLocator() {
-  getIt.registerLazySingleton<LoginRepository>(() => LoginMockApiRepository());
+  getIt.registerLazySingleton<LoginRepository>(() => LoginHttpApiRepository());
 }

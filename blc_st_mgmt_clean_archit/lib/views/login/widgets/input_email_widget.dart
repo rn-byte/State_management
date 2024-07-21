@@ -1,5 +1,4 @@
 import 'package:blc_st_mgmt_clean_archit/bloc/login/login_bloc.dart';
-import 'package:blc_st_mgmt_clean_archit/utils/validations/validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

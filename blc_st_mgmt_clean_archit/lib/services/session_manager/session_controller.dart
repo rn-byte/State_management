@@ -37,11 +37,13 @@ class SessionController {
       var isLogin = await localStorage.readValue('isLogin');
 
       if (userData.isNotEmpty) {
-        SessionController().user = UserModel.fromJson(userData);
+        SessionController().user = UserModel.fromJson(jsonDecode(userData));
       }
       SessionController().isLogin = isLogin == 'true' ? true : false;
+
+      debugPrint(SessionController().isLogin.toString());
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('Data Retriving Error: ${e.toString()}');
     }
   }
 }
