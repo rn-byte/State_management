@@ -4,13 +4,14 @@ import 'package:bloc_st_mgmt/bloc/switch/switch_bloc.dart';
 import 'package:bloc_st_mgmt/bloc/todo/todo_block.dart';
 import 'package:bloc_st_mgmt/repository/fav_repository.dart';
 import 'package:bloc_st_mgmt/utils/image/image_picker_utils.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/post/post_bloc.dart';
 import 'ui/home/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (_) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
