@@ -42,6 +42,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       'email': state.email,
       'password': state.password,
     };
+    print('This is Data: $data');
     emit(state.copyWith(status: Status.loading));
     await loginRepository.loginApi(data).then((value) async {
       if (value.error.isEmpty) {

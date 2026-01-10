@@ -4,13 +4,14 @@ import 'package:blc_st_mgmt_clean_archit/repository/auth/login_http_api_reposito
 import 'package:blc_st_mgmt_clean_archit/repository/auth/login_repository.dart';
 import 'package:blc_st_mgmt_clean_archit/repository/movies_repo/movies_http_api_repository.dart';
 import 'package:blc_st_mgmt_clean_archit/repository/movies_repo/movies_repository.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt getIt = GetIt.instance;
 void main() {
   serviceLocator();
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: true, builder: (_) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
